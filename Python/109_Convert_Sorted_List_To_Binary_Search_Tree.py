@@ -11,4 +11,25 @@
 #         self.right = right
 class Solution:
     def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
+        sortedList = []
         
+        while head:
+            sortedList.append(head.val)
+            head = head.next
+
+        return self.sortedListToBSTHelper(sortedList, 0, len(sortedList)-1)
+
+    def sortedListToBSTHelper(self,sortedList, startIndex, endIndex):
+        if startIndex > endIndex:
+            return None
+        
+        middle = (startIndex + endIndex) // 2
+        root = TreeNode(sortedList[middle])
+        if endIndex == startIndex:
+            return root
+        else:
+            root.left = self.sortedListToBSTHelper(sortedList, startIndex, middle-1)
+            root.right = self.sortedListToBSTHelper(sortedList, middle+1, endIndex)
+        return root
+
+
