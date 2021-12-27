@@ -12,13 +12,11 @@ class Solution:
         if root is None:
             return []
         
-        result, queue = [], deque()
-        queue.append(root)
+        result, queue = [], deque([root])
         
-        while len(queue) > 0:
-            queue_length = len(queue)
+        while queue:
             level = []
-            for i in range(queue_length):
+            for _ in range(len(queue)):
                 current_node = queue.popleft()
                 level.append(current_node.val)
                 for child in current_node.children:
