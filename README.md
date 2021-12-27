@@ -6,6 +6,7 @@ Solutions for leetcode problems in various programming languages.
 
 |                                        #                                        |                                                Problem                                                | Solution | Time  | Space | Difficulty |
 | :-----------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: | :------: | :---: | :---: | :--------: |
+|                   [1](https://leetcode.com/problems/two-sum/)                   |                                    [Two Sum](/Python/1_Two_Sum.py)                                    |  Python  | O(N)  | O(1)  |    Easy    |
 |      [144](https://leetcode.com/problems/binary-tree-preorder-traversal/)       |            [Binary Tree Preorder Traversal](/Python/144_Binary_Tree_Preorder_Traversal.py)            |  Python  | O(N)  | O(N)  |    Easy    |
 |       [94](https://leetcode.com/problems/binary-tree-inorder-traversal/)        |              [Binary Tree Inorder Traversal](Python/94_Binary_Tree_Inorder_Traversal.py)              |  Python  | O(N)  | O(N)  |    Easy    |
 |      [145](https://leetcode.com/problems/binary-tree-postorder-traversal/)      |           [Binary Tree Postorder Traversal](/Python/145_Binary_Tree_Postorder_Traversal.py)           |  Python  | O(N)  | O(N)  |    Easy    |
