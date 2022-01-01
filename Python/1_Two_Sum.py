@@ -1,32 +1,32 @@
 class Solution(object):
     # There are three possible solutions depending on the trade-offs:
 
-    # # Time: O(N^2), Space: O(1)
-    # def twoSum(self, nums, target):
-    #     """
-    #     :type nums: List[int]
-    #     :type target: int
-    #     :rtype: List[int]
-    #     """
-    #     for i in range(len(nums)-1):
-    #         firstNum = nums[i]
-    #         for j in range(i + 1, len(nums)):
-    #             secondNum = nums[j]
-    #             if firstNum + secondNum == target:
-    #                 return [i, j]
-        # return []
+    # Time: O(N^2), Space: O(1)
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        for i in range(len(nums)-1):
+            firstNum = nums[i]
+            for j in range(i + 1, len(nums)):
+                secondNum = nums[j]
+                if firstNum + secondNum == target:
+                    return [i, j]
+        return []
 
-    # # Time: O(N), Space: O(N)    
-    # def twoSum(self, nums, target):
-    #     auxSpace = {}
+    # Time: O(N), Space: O(N)    
+    def twoSum(self, nums, target):
+        auxSpace = {}
 
-    #     for index, value in enumerate(nums):
-    #         potentialValue = target - value
-    #         if potentialValue in auxSpace:
-    #             return [auxSpace[potentialValue], index]
-    #         else:
-    #             auxSpace[value] = index
-    #     return []
+        for index, value in enumerate(nums):
+            potentialValue = target - value
+            if potentialValue in auxSpace:
+                return [auxSpace[potentialValue], index]
+            else:
+                auxSpace[value] = index
+        return []
 
     # Time: O(NlogN), Space: O(1)
     def twoSum(self, nums, target):
