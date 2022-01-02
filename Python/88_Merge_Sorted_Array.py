@@ -13,7 +13,7 @@ class Solution(object):
         
     #     return nums1.sort()
 
-    #Time: O(N+M), Space: O(M)
+    #Time: O(N+M), Space: O(1)
     def merge(self, nums1, m, nums2, n):
 
         lastElement = n + m - 1
