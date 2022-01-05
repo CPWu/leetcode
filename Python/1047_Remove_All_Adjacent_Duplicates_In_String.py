@@ -4,8 +4,18 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
+
+        stack = []
+        # Time: O(N), Space: O(N)
+        for character in s:
+            if stack and stack[-1]==character:
+                stack.pop()
+            else:
+                stack.append(character)
+        
+        return "".join(stack)
         
         
 soln = Solution()
 s = "abbaca"
-print(soln.addStrings(s1, s2))
+print(soln.removeDuplicates(s))

@@ -5,6 +5,7 @@ class Solution(object):
         :type num2: str
         :rtype: str
         """
+        # Time: O(max(N1, N2)), Space: O(max(N1, N2)+1)
         i = len(num1) - 1
         j = len(num2) - 1
 
