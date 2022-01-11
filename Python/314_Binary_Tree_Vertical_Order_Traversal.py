@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 
-from collections import defaultdict
+from collections import defaultdict, deque
 class Solution(object):
 #     # Time: O(NlogN), Space: O(N)
 #     def verticalOrder(self, root):
