@@ -55,11 +55,15 @@ class SparseVector:
 # # v2 = SparseVector(nums2)
 # # ans = v1.dotProduct(v2)
 
+    # Time: O(N), Space: O(1)
     def __init__(self, nums):
         """
         :type nums: List[int]
         """
-        self.array = nums
+        self.pairs = []
+        for index, value in enumerate(nums):
+            if value != 0:
+                self.pairs.append(index, value)
 
     # Return the dotProduct of two sparse vectors
     def dotProduct(self, vec):
@@ -68,10 +72,18 @@ class SparseVector:
         :rtype: int
         """
         result = 0
-        for num1, num2 in zip(self.array, vec.array):
-            result += num1 * num2
+        p, q = 0, 0
+
+        while p < len(self.pairs) and q < len(vec.pairs):
+            if self.pairs[p][0] == vec.pairs[q][0]:
+                result += self.pairs[p][1] * vec.pairs[q][1]
+                p += 1
+                q += 1
+            elif self.pairs[p][0] < vec.pairs[q][0]:
+                p += 1
+            else: 
+                q += 1
         return result
-        
 
 # Your SparseVector object will be instantiated and called as such:
 # v1 = SparseVector(nums1)

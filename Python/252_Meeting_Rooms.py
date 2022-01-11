@@ -8,7 +8,7 @@ class Solution(object):
         """
         intervals.sort()
 
-        for interval in range((intervals) - 1):
+        for interval in range(len(intervals) - 1):
             if intervals[interval][1] > intervals[interval + 1][0]:
                 return False
         return True

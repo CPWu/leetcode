@@ -1,4 +1,5 @@
 class Solution(object):
+    # Time: O(N), Space: (1)    
     def nextPermutation(self, nums):
         """
         :type nums: List[int]
@@ -23,18 +24,12 @@ class Solution(object):
 
         swap = length - 1
 
+        # Find number just larger than the previously chosen number on the left.
         while nums[pivot - 1] >= nums[swap]:
             swap -= 1
     
+        # Swap the Elements
         nums[swap], nums[pivot-1] = nums[pivot - 1], nums[swap]
-
+        
+        # Reverse the numbers prior to the pivot.
         nums[pivot:] = sorted(nums[pivot:])
-
-
-        # find pivot
-        # find number in subsequence (swap), first num greater than pivot
-        # swap
-        # reverse from pivot
-
-
-        1 5 8 4 7 6 5 3 1 
