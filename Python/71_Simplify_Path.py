@@ -1,4 +1,5 @@
 class Solution(object):
+    # Time: O(N), Space: O(N)
     def simplifyPath(self, path):
         """
         :type path: str
