@@ -8,9 +8,6 @@ class Solution(object):
         :rtype: List[int]
         """
         
-        if k == len(nums):
-            return nums
-
         # Build hash map by character: frequency
         # O(N)      
         count = Counter(nums)
@@ -18,3 +15,4 @@ class Solution(object):
         count = sorted(count, key=lambda x:count[x], reverse=True)
         
         return count[:k]
+
