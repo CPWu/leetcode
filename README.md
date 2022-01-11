@@ -25,6 +25,9 @@ Solutions for leetcode problems in various programming languages.
 |  [236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)  |   [Lowest Common Ancestor of a Binary Tree](/Python/236_Lowest_Common_Ancestor_Of_A_Binary_Tree.py)   |  Python  |     O(N)      |      O(N)       |   Medium   |
 |               [252](https://leetcode.com/problems/meeting-rooms/)               |                             [Meeting Rooms](/Python/252_Meeting_Rooms.py)                             |  Python  |   O(NlogN)    |      O(1)       |    Easy    |
 |             [253](https://leetcode.com/problems/meeting-rooms-ii/)              |                          [Meeting Rooms II](/Python/253_Meeting_Rooms_II.py)                          |  Python  |   O(NlogN)    |      O(N)       |   Medium   |
+|   [314](https://leetcode.com/problems/binary-tree-vertical-order-traversal/)    |      [Binary Tree Vertical Order Traversal](/Python/314_Binary_Tree_Vertical_Order_Traversal.py)      |  Python  |     O(N)      |      O(N)       |   Medium   |
+|   [347](https://leetcode.com/problems/top-k-frequent-elements/)    |      [Top K Frequent Elements](/Python/)      |  Python  |     O()      |      O()       |   Medium   |
+
 |          [408](https://leetcode.com/problems/valid-word-abbreviation/)          |                   [Valid Word Abbreviation](/Python/408_Valid_Work_Abbreviation.py)                   |  Python  |     O(N)      |      O(1)       |    Easy    |
 |                [415](https://leetcode.com/problems/add-strings/)                |                               [Add Strings](/Python/415_Add_Strings.py)                               |  Python  | O(max(N1,N2)) | O(max(N1,N2)+1) |    Easy    |
 |     [429](https://leetcode.com/problems/n-ary-tree-level-order-traversal/)      |          [N-ary Tree Level Order Traversal](/Python/429_N-ary_Tree_LeveL_Order_Traversal.py)          |  Python  |     O(N)      |      O(N)       |   Medium   |
