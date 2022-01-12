@@ -1,29 +1,35 @@
 class Solution(object):
-    # Time: O(N), Space(1)
-    def validPalindrome(self, s):
+    def accountsMerge(self, accounts):
         """
-        :type s: str
-        :rtype: bool
-        """    
-        leftPointer = 0
-        rightPointer = len(s) - 1
-
-        while leftPointer < rightPointer:
-            if s[leftPointer] != s[rightPointer]:
-                return self.isPalindrome(s, leftPointer+1, rightPointer) or self.isPalindrome(s, leftPointer, rightPointer - 1)
-            leftPointer += 1
-            rightPointer -= 1
-
-        return True
-
-    def isPalindrome(self, s, leftPointer, rightPointer):
-        while leftPointer < rightPointer:
-            if s[leftPointer] != s[rightPointer]:
-                return False
-            leftPointer += 1
-            rightPointer -= 1
-        return True
-
-soln = Solution()
-s = "abc"
-print(soln.validPalindrome(s))
+        :type accounts: List[List[str]]
+        :rtype: List[List[str]]
+        """
+        # Time: O(NklogNK), Space: O(NK)
+        # There is also a Disjoint Set Union approach
+        email_to_name = dict()
+        adj_lists = collections.defaultdict(set)
+        for account in accounts:
+            for email in account[1:]:
+                adj_lists[account[1]].add(email)
+                adj_lists[email].add(account[1])
+                email_to_name[email] = account[0]
+                
+        visited = set()
+        result = []
+        for email in adj_lists:
+            if email in visited:
+                continue
+            visited.add(email)
+            stack = [email]
+            emails = []
+            while stack:
+                email = stack.pop()
+                emails.append(email)
+                for alt_email in adj_lists[email]:
+                    if alt_email in visited: continue
+                    visited.add(alt_email)
+                    stack.append(alt_email)
+            result.append([email_to_name[email]] + sorted(emails))
+    
+        return result
+        
