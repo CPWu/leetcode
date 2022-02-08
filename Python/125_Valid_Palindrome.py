@@ -1,33 +1,39 @@
-class Solution(object):
-    
-    # # Time: O(N^2), Space: O(N)
-    # def isPalindrome(self, s):
-    #     """
-    #     :type s: str
-    #     :rtype: bool
-    #     """
+# 4 Possible Solutions
+# 1. Compare with Reverse - String
+# 2. Compare with Reverse - List
+# 3. Recursion
+# 4. Two Pointers
 
-    #     reversedString = ""
-    #     s = s.lower()
+
+class Solution(object): 
+    # Time: O(N^2), Space: O(N)
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+
+        reversedString = ""
+        s = s.lower()
         
-    #     for character in s:
-    #         if character.isalnum():
-    #             # String Concat = N * N
-    #             # Concat requires iterating over string 'reversedString' every loop before appending,thus the complexity.
-    #             reversedString += character.lower()
-    #     return reversedString == reversedString[::-1]
+        for character in s:
+            if character.isalnum():
+                # String Concat = N * N
+                # Concat requires iterating over string 'reversedString' every loop before appending,thus the complexity.
+                reversedString += character.lower()
+        return reversedString == reversedString[::-1]
 
-    # # Time: O(N), Space: O(N)
-    # def isPalindrome(self, s):
-    #     reversedChars = []
-    #     for i in range(len(s)):
-    #         reversedChars.append(s[i])
-    #     return s == "".join(reversedChars)
+    # Time: O(N), Space: O(N)
+    def isPalindrome(self, s):
+        reversedChars = []
+        for i in range(len(s)):
+            reversedChars.append(s[i])
+        return s == "".join(reversedChars)
     
-    # # Time: O(N), Space: O(N) 
-    # def isPalindrome(self, s, i = 0):
-    #     j = len(s) - 1 - i
-    #     return True if i >= j else s[i] == s[j] and self.isPalindrome(s, i + 1)
+    # Time: O(N), Space: O(N) 
+    def isPalindrome(self, s, i = 0):
+        j = len(s) - 1 - i
+        return True if i >= j else s[i] == s[j] and self.isPalindrome(s, i + 1)
 
     # Time: O(N), Space: O(1)
     def isPalindrome(self, s):
