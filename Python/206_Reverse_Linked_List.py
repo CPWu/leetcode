@@ -24,13 +24,15 @@ class Solution:
     # Recursive
     # Time: O(N), Space: O(N)
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        previousNode = None
-        currentNode = head
+        if not head:
+            return None
         
-        while currentNode:
-            nextNode = currentNode.next
-            currentNode.next = previousNode
-            previousNode = currentNode
-            currentNode = nextNode
-        return previousNode
-    
+        newHead = head
+
+        if head.next:
+            newHead = self.reverseList(head.next)
+            head.next.next = head
+        head.next = None
+
+        return newHead
+        
