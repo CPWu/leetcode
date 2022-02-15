@@ -1,6 +1,5 @@
-# 2 Possible Solutions
-# 1. Cheat using .reverse()
-# 2. Backtracking
+# 1 Possible Solutions
+# 1. Backtracking
 
 class Solution:
     # Time: O(N * 2^N), Space: O(N)
