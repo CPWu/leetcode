@@ -4,7 +4,7 @@ class Solution:
         stack = []
         result = []
 
-        def backtrack(openN, closedN)
+        def backtrack(openN, closedN):
             if openN == closedN == n:
                 result.append("".join(stack))
                 return
