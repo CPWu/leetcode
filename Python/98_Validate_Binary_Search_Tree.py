@@ -14,17 +14,17 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
         # Nested Function
-        def valid(node, leftBoundary, rightBoundary):
+        def valid(node, left, right):
             # If BST is empty it is still a valid BST
             if not node:
                 return True
 
-            if node.val < rightBoundary and node.val > leftBoundary:
+            if not (node.val < right and node.val > left):
                 return False
 
             # Left subtree has to be less than the parent node.val)
             # Right subtree has to be greater than the parent node.val)
-            return (valid(node.left, leftBoundary, node.val) + valid(node.rightBoundary, node.val, right))             
+            return (valid(node.left, left, node.val) and valid(node.right, node.val, right))             
 
         return valid(root, float("-inf"), float("inf"))
 
