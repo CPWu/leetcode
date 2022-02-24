@@ -1,3 +1,8 @@
+# 4 Possible Solutions
+# 1. Iterative - One Stack
+# 2. Iterative
+# 3. Recursive
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -5,26 +10,44 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-#     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-#         result = []
-#         self._inorderTraversal(root, result)
-#         return result
-    
-#     def _inorderTraversal(self, root, result):
-#         if root:
-#             self._inorderTraversal(root.left, result)
-#             result.append(root.val)
-#             self._inorderTraversal(root.right, result)
-
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        stack, result = [], []
+    # Two Stack
+    # Time: O(N), Space: O(H)
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        # Empty Tree
+        if not root:
+            return None
         
-        while root or stack:
-            if root:
-                stack.append(root)
-                root = root.left
-            else:
-                node = stack.pop()
+        stack = [root]
+        result = []
+        
+        while stack:
+            currentNode = stack.pop()
+            result.append(currentNode.val)
+            
+            if currentNode.left:
+                stack.append(currentNode.left)
+                
+            if currentNode.right:
+                stack.append(currentNode.right)
+                
+        
+        return result[::-1]
+
+    # Recursion
+    # Time: O(N), Space: O(H)
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        # Empty Tree
+        if not root:
+            return None
+        
+        result = []
+        
+        def _postOrderTraversal(node, result):
+            if node:
+                _postOrderTraversal(node.left, result)
+                _postOrderTraversal(node.right, result)
                 result.append(node.val)
-                root = node.right
+                
+        _postOrderTraversal(root, result)
+        
         return result
