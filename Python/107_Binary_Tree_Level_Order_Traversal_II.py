@@ -1,3 +1,7 @@
+# 2 Possible Solutions
+# 1. Iterative
+# 2. Recursive
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -7,23 +11,58 @@
 
 from collections import deque
 class Solution:
-    def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if root is None:
-            return []
-    
+# Recursive
+# Time: O(N), Space:(H)
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        # Handles an empty tree
+        if not root:
+            return 
+        
         queue = deque([root])
         result = []
-
+        
         while queue:
             level = []
             for _ in range(len(queue)):
-                current_node = queue.popleft()
-                level.append(current_node.val)
+                # Pop nodes in that level and add to result
+                currentNode = queue.popleft()
+                level.append(currentNode.val)
                 
-                if current_node.left:
-                    queue.append(current_node.left)
-                if current_node.right:
-                    queue.append(current_node.right)
+                if currentNode.left:
+                    queue.append(currentNode.left)
+                if currentNode.right:
+                    queue.append(currentNode.right)
+                    
             result.append(level)
+            
+        return result
+
+    # Iterative
+    # Time: O(N), Space:(H)
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        levels = []
+        if not root:
+            return levels
+        
+        level = 0
+        queue = deque([root])
+        
+        while queue:
+            # Start the current level
+            levels.append([])
+            
+            # number of elements in this level
+            level_length = len(queue)
+            
+            for node in range(len(queue)):
+                currentNode = queue.popleft()
+                # Fulfill the current level
+                levels[level].append(currentNode.val)
                 
-        return result[::-1]
+                if currentNode.left:
+                    queue.append(currentNode.left)
+                if currentNode.right:
+                    queue.append(currentNode.right)
+                    
+            level += 1
+        return levels

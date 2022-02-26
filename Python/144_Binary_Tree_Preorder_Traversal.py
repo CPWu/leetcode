@@ -1,33 +1,45 @@
+# 2 Possible Solutions
+# 1. Iterative
+# 2. Recursive
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
-#     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-#         result = []
-#         self._preorderTraversal(root, result)
-#         return result
 
-#     ## Recursive
-#     def _preorderTraversal(self, root, result):
-#         if root:
-#             result.append(root.val)
-#             self._preorderTraversal(root.left, result)
-#             self._preorderTraversal(root.right, result)
-
-    ## Iterative
-    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if root is None:
-            return []
-        result, stack = [], [root]
+# # Iterative
+# # Time: O(N), Space:(H)
+# def preorder(root):
+#     # Empty Tree
+#     if not root:
+#         return []
+#     stack = [root]
+#     result = []
+    
+#     while stack:
+#         currentNode = stack.pop()
+#         if currentNode:
+#             result.append(currentNode.value)
+#             stack.append(currentNode.right)
+#             stack.append(currentNode.left)
         
-        while stack:
-            node = stack.pop()
-            if node:
-                result.append(node.val)
-                stack.append(node.right)
-                stack.append(node.left)
-        return result
+#     return result
 
+# Recursive
+# Time: O(N), Space:(H)
+def preorder(root):
+    if not root:
+        return []
+    result = []
+    
+    def _preorderTraversal(root, result):
+        if root:
+            result.append(root.value)
+            _preorderTraversal(root.left, result)        
+            _preorderTraversal(root.right, result)
+
+    _preorderTraversal(root, result)
+    
+    return result

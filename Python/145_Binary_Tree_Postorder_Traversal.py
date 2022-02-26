@@ -1,6 +1,5 @@
 # 4 Possible Solutions
-# 1. Iterative - One Stack
-# 2. Iterative
+# 2. Iterative - Two Stack
 # 3. Recursive
 
 # Definition for a binary tree node.
