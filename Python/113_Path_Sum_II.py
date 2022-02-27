@@ -1,3 +1,7 @@
+# 1 Possible Solutions
+# 1. Recursive
+# 2. Iterative
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -5,29 +9,29 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def pathSum(self, root: TreeNode, sum: int) -> List[List[int]]:
-        rst = []
-        self._dfs(root, sum, rst, [])
-        return rst 
-
-    def _dfs(self, root, sum, rst, path):
+    # Recursive
+    # Time: O(N), Space: O(N)
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+        
+        # Empty
         if not root:
-            return 
-
-        # add current root's value to the path 
-        path.append(root.val)
-
-        # in case this is a leaf node 
-        if not root.left and not root.right:
-            if not sum - root.val:
-                # for primitive values, [:] is sufficient (although it is doing shallow copy)
-                rst.append(path[:])
-        else:
-            self._dfs(root.left, sum - root.val, rst, path)
-            self._dfs(root.right, sum - root.val, rst, path)
-
-        # backtrack 
-        path.pop()
+            return []
+        # Return List
+        result = []
+        
+        def dfs(node, currentPath, currentSum):
+            currentSum += node.val
+            tempPath = currentPath + [node.val]
+            if node.left:
+                dfs(node.left, tempPath, currentSum)
+            if node.right:
+                dfs(node.right, tempPath, currentSum)         
+            if not node.left and not node.right and currentSum == targetSum:
+                result.append(tempPath)
+            
+        dfs(root, [], 0)
+            
+        return result
             
     def pathSum2(self, root, sum):
         if not root:
