@@ -34,25 +34,24 @@ class Solution(object):
         """
         if root is None:
             return []
-        
+            
         visibleValues = []
         
         queue = deque([root])
         
         while queue:
-            num_nodes = len(queue)
-            for i in range(num_nodes):
-                node = queue.popleft()
-                # Check to see if its the last item on this level/last node on this level
-                if i == num_nodes - 1:
-                    visibleValues.append(node.val)
-                
-                # Add children nodes
-                if node.left:
-                    queue.append(node.left)
-                if node.right:
-                    queue.append(node.right)
-        
+            levelLength = len(queue)
+            for i in range(levelLength):
+                currentNode = queue.popleft()
+                if i == levelLength - 1:
+                    visibleValues.append(currentNode.value)
+                    
+                if currentNode.left:
+                    queue.append(currentNode.left)
+                if currentNode.right:
+                    queue.append(currentNode.right)
+                    
         return visibleValues
+                
                     
         
