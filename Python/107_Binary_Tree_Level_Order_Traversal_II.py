@@ -35,34 +35,5 @@ class Solution:
                     
             result.append(level)
             
-        return result
+        return result[::-1]
 
-    # Iterative
-    # Time: O(N), Space:(H)
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        levels = []
-        if not root:
-            return levels
-        
-        level = 0
-        queue = deque([root])
-        
-        while queue:
-            # Start the current level
-            levels.append([])
-            
-            # number of elements in this level
-            level_length = len(queue)
-            
-            for node in range(len(queue)):
-                currentNode = queue.popleft()
-                # Fulfill the current level
-                levels[level].append(currentNode.val)
-                
-                if currentNode.left:
-                    queue.append(currentNode.left)
-                if currentNode.right:
-                    queue.append(currentNode.right)
-                    
-            level += 1
-        return levels
