@@ -8,7 +8,7 @@ class Solution:
         if not image or image[sr][sc] == newColor:
             return image
 
-        self._floodFill(image, sr, sc, image[sr][sc], newColor):
+        self._floodFill(image, sr, sc, image[sr][sc], newColor)
         return image
     
     def _floodFill(self, image, sr, sc, initialColor, newColor):
