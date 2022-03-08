@@ -1,3 +1,6 @@
+# 1 Possible Solutions
+# 1. Two Pointer
+
 class Solution(object):
     # Time: O(N), Space(1)
     def validPalindrome(self, s):
