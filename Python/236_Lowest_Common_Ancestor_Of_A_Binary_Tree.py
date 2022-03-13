@@ -41,3 +41,39 @@ class Solution(object):
             return left if left else right
         
         return dfs(root)
+
+    # Time: O(N), Space: O(N)
+    def lowestCommonAncestor(self, root, p, q):
+        """
+        :type root: TreeNode
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: TreeNode
+        """
+
+        # Cases:
+        # 1. One node in Left/Right Tree
+        # 2. Both nodes are in left tree
+        # 3. Both nodes are in right tree
+        # 4. One node is ancestor and other node is in left or right tree
+
+        self.result = None
+        
+        def dfs(currentNode):
+            if not currentNode:
+                return False
+            
+            left = dfs(currentNode.left)
+            right = dfs(currentNode.right)
+            
+            current = (currentNode == p) or (currentNode == q)
+            
+            if (left and right) or (left and current) or (right and current):
+                self.result = currentNode
+                return
+        
+            return left or right or current
+        
+        dfs(root)
+        return self.result
+          
