@@ -1,5 +1,5 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
+# class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
@@ -14,20 +14,30 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
-        self.result = None
 
-        def dfs(node):
-            if not node:
-                return False
+        # Cases:
+        # 1. One node in Left/Right Tree
+        # 2. Both nodes are in left tree
+        # 3. Both nodes are in right tree
+        # 4. One node is ancestor and other node is in left or right tree
+        def dfs(currentNode):
+            if not currentNode:
+                return None
             
-            left = dfs(node.left)
-            right = dfs(node.right)
-            currentNode = (node == p) or (node == q)
-            if (left and right) or (currentNode and right) or (currentNode and left):
-                self.result = node
-                return
 
-            return left or right or currentNode
+            if currentNode == p or currentNode == q:
+                return currentNode
+
+            # Go down the left tree
+            left = dfs(currentNode.left)
+            # Go down the right tree
+            right = dfs(currentNode.right)
+
+            # Case #1
+            if left and right:
+                return currentNode
+
+            # Second Case
+            return left if left else right
         
-        dfs(root)
-        return self.result
+        return dfs(root)
