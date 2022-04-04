@@ -29,17 +29,43 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        prevSum = defaultdict(int)
+        
         result = 0
+        
         currentSum = 0
-        prefixSums = defaultdict(int)
-
-        for i in range(len(nums)):
+        
+        for i in range(0,len(nums)):
             currentSum += nums[i]
-
+            
             if currentSum == k:
                 result += 1
-            if currentSum - k in prefixSums:
-                result += prefixSums[currentSum-k]
             
-            prefixSums[currentSum-1]
+            if currentSum - k in prevSum:
+                result += prevSum[currentSum - k]
+            
+            prevSum[currentSum] += 1       
         return result
+
+         def continuousSum(a, t):
+      if len(a) == 0:
+          return False
+
+      i = 0
+      tSum = 0
+      start = 0
+
+      while i < len(a):
+          if (tSum + a[i]) < t:
+              tSum += a[i]
+          elif (tSum + a[i]) == t:
+              return True
+          else:
+              tSum += a[i]
+              while tSum > t:
+                  tSum -= a[start]
+                  start += 1
+              if tSum == t:
+                  return True
+              i += 1
+       return False

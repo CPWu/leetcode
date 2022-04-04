@@ -61,25 +61,30 @@ class Solution:
         
         return "".join(result)
 
-class Solution(object):
-    # Time: O(N), Space: O(1)
-    def minRemoveToMakeValid(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
+    # Time: O(N), Space: O(N)
+    def minRemoveToMakeValid(self, s: str) -> str:
+        firstPass = []
+        balance = 0
+        openSeen = 0
+        
+        for character in s:
+            if character == "(":
+                balance += 1
+                openSeen += 1
+            if character == ")":
+                if balance == 0:
+                    continue
+                balance -= 1
+            firstPass.append(character)
+        
         result = []
-        capacity = s.count(')')
-        opened = 0
-
-        for char in s:
-            if char == '(':
-                if opened == capacity: continue
-                opened += 1
-            elif char == ")":
-                capacity -= 1
-                if not opened: continue
-                opened -= 1
+        openToKeep = openSeen - balance
+        for character in firstPass:
+            if character == "(":
+                openToKeep -= 1
+                if openToKeep < 0:
+                    continue
+            result.append(character)
             
-            result.append(char)
+        
         return "".join(result)
